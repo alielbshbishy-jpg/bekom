@@ -4,22 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bekom | تطوير عقاري واستثمار بالمشاركة — مع بعض.. نقدر نبني أكثر</title>
-  <meta name="description" content="بيكم (Bekom) نموذج تطوير عقاري واستثمار بالمشاركة قائم على الشفافية والتخطيط المسؤول من اختيار الأرض حتى التسليم." />
+  <meta name="description" content="بيكم (Bekom) شركة متخصصة في التطوير العقاري والاستثمار بالمشاركة بشفافية وتخطيط واضح من اختيار الأرض حتى التسليم." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --forest-950: #081816;
-      --forest-900: #0c2220;
-      --forest-800: #13312e;
-      --forest-700: #1b423e;
-      --sand-200: #efe1ce;
+      --forest-950: #071715;
+      --forest-900: #0b201e;
+      --forest-800: #112e2b;
+      --forest-700: #183e3a;
+      --sand-200: #f1e3d0;
       --sand-400: #e2c7a5;
-      --sand-500: #c8a479;
-      --ink-light: #f5f1ea;
-      --ink-muted: #bdd0cd;
-      --ink-dark: #0e2422;
+      --sand-500: #c5a176;
+      --ink-light: #f6f2eb;
+      --ink-muted: #c0d2cf;
+      --ink-dark: #0c211f;
       --radius-lg: 22px;
       --radius-md: 15px;
     }
@@ -42,12 +42,11 @@
       overflow-x: hidden;
     }
 
-    /* Subtle architectural grid inspired by brochure */
-    .arch-bg {
+    .blueprint-grid {
       background-image:
-        linear-gradient(to right, rgba(226, 199, 165, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(226, 199, 165, 0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
+        linear-gradient(to right, rgba(226, 199, 165, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 199, 165, 0.045) 1px, transparent 1px);
+      background-size: 46px 46px;
     }
 
     a {
@@ -65,12 +64,12 @@
       position: sticky;
       top: 0;
       z-index: 60;
-      background: rgba(8, 24, 22, 0.9);
+      background: rgba(7, 23, 21, 0.9);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(226, 199, 165, 0.16);
+      border-bottom: 1px solid rgba(226, 199, 165, 0.18);
     }
 
-    .nav-inner {
+    .nav-wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -84,35 +83,50 @@
       gap: 12px;
     }
 
-    .brand-logo-img {
-      height: 48px;
-      width: auto;
-      max-width: 170px;
-      object-fit: contain;
-      border-radius: 10px;
-      border: 1px solid rgba(226, 199, 165, 0.25);
+    .brand-logo-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(140deg, var(--forest-700), var(--forest-950));
+      border: 1.5px solid var(--sand-400);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
-    .brand-title {
+    .brand-logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-fallback {
+      color: var(--sand-400);
+      font-weight: 900;
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .brand-name {
       display: block;
       font-weight: 900;
       font-size: 1.2rem;
-      color: var(--ink-light);
       line-height: 1.1;
     }
 
-    .brand-tag {
+    .brand-sub {
       display: block;
-      font-size: 0.7rem;
-      letter-spacing: 1.2px;
+      font-size: 0.68rem;
       color: var(--sand-400);
+      letter-spacing: 1.1px;
       text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
       font-size: 0.94rem;
       color: var(--ink-muted);
     }
@@ -132,7 +146,7 @@
       font-size: 0.94rem;
       border: none;
       cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease;
     }
 
     .btn:hover {
@@ -142,7 +156,6 @@
     .btn-sand {
       background: var(--sand-400);
       color: var(--ink-dark);
-      box-shadow: 0 10px 24px rgba(226, 199, 165, 0.16);
     }
 
     .btn-ghost {
@@ -153,36 +166,33 @@
 
     /* Hero */
     .hero {
-      padding: 72px 0 80px;
-      position: relative;
+      padding: 68px 0 76px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.85fr;
-      gap: 36px;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 34px;
       align-items: center;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .badge {
+      display: inline-block;
       padding: 6px 14px;
       border-radius: 999px;
-      background: rgba(226, 199, 165, 0.12);
+      background: rgba(226, 199, 165, 0.13);
       border: 1px solid rgba(226, 199, 165, 0.35);
       color: var(--sand-400);
       font-weight: 700;
       font-size: 0.85rem;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .hero h1 {
-      font-size: clamp(2.1rem, 4.3vw, 3.25rem);
+      font-size: clamp(2.05rem, 4.2vw, 3.2rem);
       font-weight: 900;
-      line-height: 1.22;
-      margin-bottom: 18px;
+      line-height: 1.24;
+      margin-bottom: 16px;
     }
 
     .hero h1 span {
@@ -191,82 +201,55 @@
 
     .hero p {
       color: var(--ink-muted);
-      font-size: 1.04rem;
-      margin-bottom: 28px;
-      max-width: 610px;
+      font-size: 1.03rem;
+      margin-bottom: 26px;
+      max-width: 600px;
     }
 
-    .hero-cta {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
     }
 
-    /* Blueprint Card */
-    .blueprint-card {
-      background: linear-gradient(165deg, var(--forest-800), var(--forest-950));
-      border: 1px solid rgba(226, 199, 165, 0.3);
+    .hero-visual {
+      background: var(--forest-800);
+      border: 1px solid rgba(226, 199, 165, 0.32);
       border-radius: var(--radius-lg);
-      padding: 28px;
-      position: relative;
+      padding: 14px;
       box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
     }
 
-    .blueprint-card::before {
-      content: "CO-BUILD MODEL";
-      position: absolute;
-      top: -12px;
-      left: 22px;
-      background: var(--sand-400);
-      color: var(--ink-dark);
-      font-size: 0.7rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      padding: 3px 10px;
-      border-radius: 6px;
-    }
-
-    .blueprint-card h2 {
-      color: var(--sand-400);
-      font-size: 1.2rem;
-      margin-bottom: 16px;
-    }
-
-    .diff-items {
-      display: grid;
-      gap: 14px;
-    }
-
-    .diff-item {
-      background: rgba(8, 24, 22, 0.55);
-      border: 1px solid rgba(226, 199, 165, 0.14);
-      border-radius: var(--radius-md);
-      padding: 13px 16px;
-    }
-
-    .diff-item strong {
-      color: var(--sand-200);
+    .hero-visual img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 15px;
       display: block;
-      font-size: 0.95rem;
-      margin-bottom: 2px;
+      cursor: zoom-in;
     }
 
-    .diff-item span {
-      color: var(--ink-muted);
+    .hero-visual-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 6px 4px;
       font-size: 0.86rem;
+      color: var(--sand-200);
     }
 
     /* Sections */
     section {
-      padding: 76px 0;
+      padding: 72px 0;
     }
 
     .sec-head {
       max-width: 720px;
-      margin-bottom: 38px;
+      margin-bottom: 36px;
     }
 
-    .sec-head .eyebrow {
+    .sec-head .kicker {
       color: var(--sand-400);
       font-weight: 800;
       font-size: 0.88rem;
@@ -275,7 +258,7 @@
     }
 
     .sec-head h2 {
-      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
       font-weight: 900;
       line-height: 1.28;
       margin-bottom: 10px;
@@ -285,15 +268,15 @@
       color: var(--ink-muted);
     }
 
-    /* Interactive Co-Building Journey */
-    .journey-layout {
+    /* Interactive Stages */
+    .journey-grid {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
       gap: 24px;
       align-items: start;
     }
 
-    .stage-buttons {
+    .stage-list {
       display: grid;
       gap: 10px;
     }
@@ -308,7 +291,7 @@
       border-radius: 14px;
       font-family: "Cairo", sans-serif;
       font-weight: 700;
-      font-size: 0.98rem;
+      font-size: 0.97rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -324,75 +307,127 @@
       font-weight: 800;
     }
 
-    .stage-detail {
+    .stage-card {
       background: var(--forest-800);
       border: 1px solid rgba(226, 199, 165, 0.3);
       border-radius: var(--radius-lg);
-      padding: 32px;
+      padding: 30px;
       min-height: 270px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .stage-step-tag {
+    .stage-card .num {
       color: var(--sand-400);
       font-weight: 800;
       font-size: 0.85rem;
       margin-bottom: 8px;
     }
 
-    .stage-detail h3 {
-      font-size: 1.65rem;
+    .stage-card h3 {
+      font-size: 1.6rem;
       font-weight: 900;
       color: var(--sand-200);
       margin-bottom: 12px;
     }
 
-    .stage-detail p {
+    .stage-card p {
       color: var(--ink-muted);
-      font-size: 1.02rem;
+      font-size: 1rem;
     }
 
-    /* Comparison & Cards */
-    .grid-2 {
+    /* Brochure Gallery */
+    .brochure-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
-    .panel {
+    .brochure-card {
       background: var(--forest-800);
-      border: 1px solid rgba(226, 199, 165, 0.2);
+      border: 1px solid rgba(226, 199, 165, 0.24);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brochure-card img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      cursor: zoom-in;
+      border-bottom: 1px solid rgba(226, 199, 165, 0.16);
+    }
+
+    .brochure-body {
+      padding: 20px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .brochure-body h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--sand-400);
+    }
+
+    .brochure-body p {
+      color: var(--ink-muted);
+      font-size: 0.92rem;
+    }
+
+    .zoom-hint {
+      font-size: 0.82rem;
+      color: var(--sand-200);
+      font-weight: 700;
+    }
+
+    /* Info Cards */
+    .cards-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .box {
+      background: var(--forest-800);
+      border: 1px solid rgba(226, 199, 165, 0.22);
       border-radius: var(--radius-lg);
       padding: 28px;
     }
 
-    .panel.highlight {
+    .box.accent {
       border-color: var(--sand-400);
       background: linear-gradient(160deg, var(--forest-700), var(--forest-800));
     }
 
-    .panel h3 {
+    .box h3 {
       font-size: 1.25rem;
       font-weight: 800;
       color: var(--sand-400);
       margin-bottom: 12px;
     }
 
-    .panel p {
+    .box p {
       color: var(--ink-muted);
       font-size: 0.96rem;
     }
 
-    .values-row {
+    .chips {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
-    .value-pill {
+    .chip {
       padding: 8px 16px;
       border-radius: 999px;
       background: rgba(226, 199, 165, 0.14);
@@ -402,31 +437,31 @@
       font-size: 0.9rem;
     }
 
-    /* Contact Band */
-    .cta-banner {
+    /* Contact */
+    .contact-panel {
       background: linear-gradient(135deg, var(--forest-700), var(--forest-950));
       border: 1px solid rgba(226, 199, 165, 0.35);
       border-radius: var(--radius-lg);
-      padding: 40px;
+      padding: 38px;
       display: grid;
       grid-template-columns: 1.25fr 0.75fr;
       gap: 28px;
       align-items: center;
     }
 
-    .cta-banner h2 {
+    .contact-panel h2 {
       font-size: clamp(1.55rem, 2.8vw, 2.15rem);
       font-weight: 900;
       margin-bottom: 10px;
     }
 
-    .cta-banner p {
+    .contact-panel p {
       color: var(--ink-muted);
       margin-bottom: 22px;
     }
 
-    .meta-box {
-      background: rgba(8, 24, 22, 0.65);
+    .info-list {
+      background: rgba(7, 23, 21, 0.65);
       border: 1px solid rgba(226, 199, 165, 0.22);
       border-radius: var(--radius-md);
       padding: 22px;
@@ -434,11 +469,63 @@
       gap: 14px;
     }
 
-    .meta-box small {
+    .info-list small {
       display: block;
       color: var(--sand-400);
       font-weight: 700;
       font-size: 0.8rem;
+    }
+
+    /* Lightbox Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      background: rgba(4, 14, 13, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 920px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: auto;
+      background: var(--forest-800);
+      border: 1px solid var(--sand-400);
+      border-radius: 18px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .modal-close {
+      position: sticky;
+      top: 0;
+      float: left;
+      background: var(--sand-400);
+      color: var(--ink-dark);
+      border: none;
+      border-radius: 10px;
+      padding: 6px 14px;
+      font-family: "Cairo", sans-serif;
+      font-weight: 900;
+      cursor: pointer;
+      margin-bottom: 10px;
     }
 
     footer {
@@ -452,9 +539,10 @@
 
     @media (max-width: 920px) {
       .hero-grid,
-      .journey-layout,
-      .grid-2,
-      .cta-banner {
+      .journey-grid,
+      .brochure-grid,
+      .cards-2,
+      .contact-panel {
         grid-template-columns: 1fr;
       }
 
@@ -464,20 +552,23 @@
     }
   </style>
 </head>
-<body class="arch-bg">
+<body class="blueprint-grid">
   <header>
-    <div class="container nav-inner">
+    <div class="container nav-wrap">
       <a href="#" class="brand">
-        <img src="becom.jpeg" alt="Bekom Logo" class="brand-logo-img" />
+        <div class="brand-logo-box">
+          <img src="becom.jpeg" alt="Bekom Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="brand-fallback" style="display:none;">B</span>
+        </div>
         <div>
-          <span class="brand-title">Bekom</span>
-          <span class="brand-tag">Real Estate Development</span>
+          <span class="brand-name">Bekom</span>
+          <span class="brand-sub">Real Estate Development</span>
         </div>
       </a>
       <nav class="nav-links">
-        <a href="#journey">رحلة المشاركة</a>
-        <a href="#story">حكاية بيكم</a>
-        <a href="#clarity">الشفافية والحجز</a>
+        <a href="#journey">نموذج المشاركة</a>
+        <a href="#brochure">صفحات البروشور</a>
+        <a href="#transparency">الشفافية والحجز</a>
         <a href="#contact">تواصل معنا</a>
       </nav>
       <a href="https://wa.me/201091335522" target="_blank" rel="noopener" class="btn btn-sand">تواصل واتساب</a>
@@ -487,51 +578,37 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="pill">مع بعض.. نقدر نبني أكثر • Together, We Build more</div>
+        <div class="badge">مع بعض.. نقدر نبني أكثر • Together, We Build more</div>
         <h1>مش مجرد مشتري لوحدة.. إنت <span>شريك في البناء</span> من أول خطوة</h1>
         <p>
-          في <strong>Bekom</strong> بنقدم مفهوم مختلف للتطوير العقاري والاستثمار بالمشاركة: تشارك في دراسة الفكرة واختيار الأرض، وتعرف تفاصيل التكلفة والميزانية، وتتابع كل مرحلة من البناء لحد الاستلام بوضوح كامل.
+          بيكم شركة متخصصة في التطوير العقاري والاستثمار بالمشاركة. نجمع الأفراد حول هدف واحد من دراسة الأرض واختيار الموقع للتخطيط والتصميم والتنفيذ وصولًا للتسليم، بشفافية كاملة في التكلفة والمتابعة.
         </p>
-        <div class="hero-cta">
+        <div class="hero-actions">
           <a href="https://wa.me/201091335522" target="_blank" rel="noopener" class="btn btn-sand">ابدأ شراكتك عبر واتساب</a>
-          <a href="#journey" class="btn btn-ghost">استكشف مراحل المشاركة</a>
+          <a href="#brochure" class="btn btn-ghost">تصفح صور البروشور</a>
         </div>
       </div>
 
-      <aside class="blueprint-card">
-        <h2>إيه المختلف في Bekom؟</h2>
-        <div class="diff-items">
-          <div class="diff-item">
-            <strong>مشاركة من البداية</strong>
-            <span>المشاركة في اختيار الأرض ودراسة المشروع قبل التنفيذ.</span>
-          </div>
-          <div class="diff-item">
-            <strong>وضوح التكلفة والميزانية</strong>
-            <span>معرفة تفاصيل التكلفة وكيف تُصرف مساهمتك وفق ميزانية معلنة.</span>
-          </div>
-          <div class="diff-item">
-            <strong>متابعة كل خطوة ميدانية</strong>
-            <span>من تجهيز الأرض والحفر والأساسات والأعمدة حتى التسليم.</span>
-          </div>
-          <div class="diff-item">
-            <strong>حقوق والتزامات واضحة</strong>
-            <span>إطار منظم يحدد حقوقك والتزاماتك من أول يوم.</span>
-          </div>
+      <div class="hero-visual">
+        <img src="500898.jpg" alt="حكاية بيكم ومن نحن ورؤيتنا" onclick="openModal(this.src, this.alt)" onerror="this.src='500904.jpg';" />
+        <div class="hero-visual-caption">
+          <span>حكاية بيكم • من نحن • رؤيتنا</span>
+          <span class="zoom-hint">اضغط للتكبير 🔍</span>
         </div>
-      </aside>
+      </div>
     </div>
   </section>
 
   <section id="journey">
     <div class="container">
       <div class="sec-head">
-        <span class="eyebrow">نموذج المشاركة التفاعلي</span>
+        <span class="kicker">نموذج المشاركة</span>
         <h2>من أول طوبة.. لحد المفتاح</h2>
-        <p>اضغط على أي خطوة في رحلة المشاركة لتتعرف على دورها في تحويل الفكرة إلى مشروع حقيقي.</p>
+        <p>اضغط على أي مرحلة في نموذج المشاركة لتتعرف على تفاصيلها.</p>
       </div>
 
-      <div class="journey-layout">
-        <div class="stage-buttons" role="tablist" aria-label="مراحل نموذج المشاركة">
+      <div class="journey-grid">
+        <div class="stage-list" role="tablist" aria-label="مراحل نموذج المشاركة">
           <button class="stage-btn active" data-stage="0"><span>1. تكوين الشراكة</span><span>←</span></button>
           <button class="stage-btn" data-stage="1"><span>2. دراسة الجدوى</span><span>←</span></button>
           <button class="stage-btn" data-stage="2"><span>3. اختيار الأرض</span><span>←</span></button>
@@ -540,8 +617,8 @@
           <button class="stage-btn" data-stage="5"><span>6. التسليم</span><span>←</span></button>
         </div>
 
-        <div class="stage-detail" id="stageBox" aria-live="polite">
-          <div class="stage-step-tag" id="stageTag">المرحلة 01 من 06</div>
+        <div class="stage-card" aria-live="polite">
+          <div class="num" id="stageNum">المرحلة 01 من 06</div>
           <h3 id="stageTitle">تكوين الشراكة</h3>
           <p id="stageDesc">نجمع الأفراد أصحاب الرؤية والهدف المشترك في نموذج تطوير عقاري قائم على المشاركة والوضوح، حيث يكون كل شريك فاهم بيشارك في إيه وإيه حقوقه من البداية.</p>
         </div>
@@ -549,57 +626,80 @@
     </div>
   </section>
 
-  <section id="story">
+  <section id="brochure">
     <div class="container">
       <div class="sec-head">
-        <span class="eyebrow">حكاية بيكم • من نحن</span>
-        <h2>البيت حلم وقيمة بتتبني مع الوقت</h2>
-        <p>إحنا مش شركة مقاولات ومش شركة تشطيبات؛ إحنا نموذج تطوير عقاري واستثمار بالمشاركة يجمع الناس حول هدف واحد.</p>
+        <span class="kicker">محتوى البروشور الكامل</span>
+        <h2>صور وتفاصيل البروشور الرسمي لـ Bekom</h2>
+        <p>استعرض جميع أقسام البروشور كما صُممت؛ اضغط على أي لوحة لفتحها بحجم كامل.</p>
       </div>
 
-      <div class="grid-2">
-        <article class="panel">
-          <h3>رؤيتنا</h3>
-          <p>
-            نفسنا نوصل ليوم يكون فيه الاستثمار العقاري فرصة أقرب لناس أكثر، ونشوف أفراد عندهم أحلام يقدروا يجتمعوا ويحققوا مع بعض مشروعات كانت صعبة على كل واحد لوحده، تحت اسم تثق فيه الناس: Bekom.
-          </p>
+      <div class="brochure-grid">
+        <article class="brochure-card">
+          <img src="500898.jpg" alt="حكاية بيكم - من نحن - رؤيتنا" onclick="openModal(this.src, this.alt)" />
+          <div class="brochure-body">
+            <h3>حكاية بيكم • من نحن • رؤيتنا</h3>
+            <p>فكرة المشاركة بدل شراء وحدة جاهزة بدون معرفة تفاصيل التكلفة، وتقريب الاستثمار العقاري لعدد أكبر من الناس.</p>
+            <span class="zoom-hint">اضغط لعرض اللوحة كاملة</span>
+          </div>
         </article>
-        <article class="panel">
-          <h3>رسالتنا</h3>
-          <p>
-            نخلي المشاركة بداية حقيقية لفرص أكبر؛ نجمع الناس اللي عندها نفس الطموح ونساعدهم يدخلوا مشروعات عقارية من خلال نظام واضح يبدأ بدراسة الفكرة وينتهي بمشروع حقيقي يحترم كل مساهمة وراها تعب وحلم وثقة.
-          </p>
+
+        <article class="brochure-card">
+          <img src="500900.jpg" alt="رسالتنا - إحنا مش بنبني مباني وبس - إيه المختلف في Bekom" onclick="openModal(this.src, this.alt)" />
+          <div class="brochure-body">
+            <h3>رسالتنا • إحنا مش بنبني مباني وبس • إيه المختلف في Bekom؟</h3>
+            <p>مشاركة حقيقية في اختيار الأرض ودراسة المشروع ومتابعة التكلفة والميزانية ومراحل البناء وحقوقك والتزاماتك من أول يوم.</p>
+            <span class="zoom-hint">اضغط لعرض اللوحة كاملة</span>
+          </div>
+        </article>
+
+        <article class="brochure-card">
+          <img src="500902.jpg" alt="نموذج المشاركة - كل جنيه بتدفعه - جدية الحجز والمساهمات" onclick="openModal(this.src, this.alt)" />
+          <div class="brochure-body">
+            <h3>نموذج المشاركة • كل جنيه بتدفعه • جدية الحجز والمساهمات</h3>
+            <p>خطوات المشاركة الست، ومتابعة التنفيذ من الحفر والأساسات للتسليم، وتوثيق جدية الحجز بإيصال رسمي ووضوح شروط الاسترداد.</p>
+            <span class="zoom-hint">اضغط لعرض اللوحة كاملة</span>
+          </div>
+        </article>
+
+        <article class="brochure-card">
+          <img src="500904.jpg" alt="ليه تختار Bekom - رسالتنا ليك - مع بعض نقدر نبني أكثر" onclick="openModal(this.src, this.alt)" />
+          <div class="brochure-body">
+            <h3>ليه تختار Bekom؟ • رسالتنا ليك • مع بعض.. نقدر نبني أكثر</h3>
+            <p>الثقة، الشفافية، المشاركة، التخطيط، والمسؤولية في إدارة مشروعات واضحة تهدف للنمو مع شركاء الرحلة.</p>
+            <span class="zoom-hint">اضغط لعرض اللوحة كاملة</span>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="clarity">
+  <section id="transparency">
     <div class="container">
       <div class="sec-head">
-        <span class="eyebrow">جدية الحجز والمساهمات • ليه تختار Bekom؟</span>
+        <span class="kicker">جدية الحجز والمساهمات • ليه تختار Bekom؟</span>
         <h2>وضوح التكلفة ومسؤولية الإدارة</h2>
         <p>مش بنوعدك إن كل مشروع هيكون الأرخص، لكن بنوعدك بوضوح التكلفة ومعرفة القيمة الفعلية لما تدفعه.</p>
       </div>
 
-      <div class="grid-2">
-        <article class="panel highlight">
+      <div class="cards-2">
+        <article class="box accent">
           <h3>جدية الحجز والمساهمات</h3>
           <p>
-            قبل ما تبدأ بتتعرف على تفاصيل المشروع وقيمة المساهمة وجدول الدفعات وشروط الحجز. مبلغ جدية الحجز بيتوثق بإيصال رسمي وبيتحسب ضمن إجمالي مساهمتك، وكل دفعة مثبتة وكل مبلغ ليه حساب، مع توضيح شروط الاسترداد والانسحاب من البداية.
+            قبل ما تبدأ بتتعرف على تفاصيل المشروع وقيمة المساهمة وجدول الدفعات وشروط الحجز. مبلغ جدية الحجز بيتوثق بإيصال رسمي وبيتحسب ضمن إجمالي مساهمتك، وكل دفعة مثبتة وكل مبلغ ليه حساب، وشروط الاسترداد والانسحاب موضحة من البداية.
           </p>
         </article>
-        <article class="panel">
-          <h3>ركائز العمل في Bekom</h3>
+        <article class="box">
+          <h3>ليه تختار Bekom؟</h3>
           <p>
-            نؤمن أن كل مشروع ناجح لازم يبدأ بتخطيط صح وشراكة واضحة وإدارة مسؤولة، ومع كل تقرير يرى الشريك مساهمته تتحول من أرقام إلى واقع.
+            كل جنيه بتدفعه وراه خطوة في بناء بيتك؛ مع كل تقرير بتشوف مساهمتك بتتحول من أرقام إلى واقع وفق تخطيط صح وشراكة واضحة وإدارة مسؤولة.
           </p>
-          <div class="values-row">
-            <span class="value-pill">الثقة</span>
-            <span class="value-pill">الشفافية</span>
-            <span class="value-pill">المشاركة</span>
-            <span class="value-pill">المسؤولية</span>
-            <span class="value-pill">التخطيط</span>
+          <div class="chips">
+            <span class="chip">الثقة</span>
+            <span class="chip">الشفافية</span>
+            <span class="chip">المشاركة</span>
+            <span class="chip">التخطيط</span>
+            <span class="chip">المسؤولية</span>
           </div>
         </article>
       </div>
@@ -608,18 +708,18 @@
 
   <section id="contact">
     <div class="container">
-      <div class="cta-banner">
+      <div class="contact-panel">
         <div>
-          <span class="eyebrow" style="color: var(--sand-400); font-weight: 800; display: block; margin-bottom: 6px;">رسالتنا ليك</span>
+          <span class="kicker" style="color: var(--sand-400); font-weight: 800; display: block; margin-bottom: 6px;">مع بعض.. نقدر نبني أكثر</span>
           <h2>عايزين نكبر بمشروعاتنا وبالناس اللي قررت تكون جزء من رحلتنا</h2>
-          <p>تواصل معنا للتعرف على تفاصيل المشاركة والفرص القادمة والإجابة عن استفساراتك مباشرة.</p>
-          <div class="hero-cta">
+          <p>تواصل معنا مباشرة للاستفسار عن نموذج المشاركة والفرص القادمة.</p>
+          <div class="hero-actions">
             <a href="https://wa.me/201091335522" target="_blank" rel="noopener" class="btn btn-sand">راسلنا على واتساب</a>
             <a href="mailto:Bekom.onlinee@gmail.com" class="btn btn-ghost">إرسال بريد إلكتروني</a>
           </div>
         </div>
 
-        <div class="meta-box">
+        <div class="info-list">
           <div>
             <small>الهاتف / واتساب</small>
             <a href="tel:+201091335522" dir="ltr">+20 1091 33 55 22</a>
@@ -629,7 +729,7 @@
             <a href="mailto:Bekom.onlinee@gmail.com">Bekom.onlinee@gmail.com</a>
           </div>
           <div>
-            <small>الموقع</small>
+            <small>العنوان</small>
             <span>برج العرب، الإسكندرية، مصر (Borj El Arab, Alex, Egypt)</span>
           </div>
         </div>
@@ -643,55 +743,79 @@
     </div>
   </footer>
 
+  <div class="modal" id="imgModal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" type="button" onclick="closeModal()">إغلاق ✕</button>
+      <img id="modalImg" src="" alt="" />
+    </div>
+  </div>
+
   <script>
-    const stages = [
+    const stagesData = [
       {
-        tag: "المرحلة 01 من 06",
+        num: "المرحلة 01 من 06",
         title: "تكوين الشراكة",
         desc: "نجمع الأفراد أصحاب الرؤية والهدف المشترك في نموذج تطوير عقاري قائم على المشاركة والوضوح، حيث يكون كل شريك فاهم بيشارك في إيه وإيه حقوقه من البداية."
       },
       {
-        tag: "المرحلة 02 من 06",
+        num: "المرحلة 02 من 06",
         title: "دراسة الجدوى",
         desc: "دراسة الفكرة والمشروع والميزانية والتكاليف الفعلية بدقة قبل بدء التنفيذ حتى تكون الصورة واضحة أمام جميع الشركاء."
       },
       {
-        tag: "المرحلة 03 من 06",
+        num: "المرحلة 03 من 06",
         title: "اختيار الأرض",
         desc: "المشاركة في اختيار الأرض ودراسة موقعها ومقوماتها لتأسيس مشروع عقاري مدروس ومناسب للهدف."
       },
       {
-        tag: "المرحلة 04 من 06",
+        num: "المرحلة 04 من 06",
         title: "التصميم والتجهيز",
         desc: "تجهيز التصاميم والمخططات والترتيبات الفنية اللازمة للانتقال المنظم نحو مرحلة التنفيذ."
       },
       {
-        tag: "المرحلة 05 من 06",
+        num: "المرحلة 05 من 06",
         title: "البناء والتنفيذ",
         desc: "متابعة خطوات التنفيذ من تجهيز الأرض والحفر والأساسات والأعمدة والخرسانة والتأسيسات مع تقارير توضح ما تم تنفيذه والخطوة التالية."
       },
       {
-        tag: "المرحلة 06 من 06",
+        num: "المرحلة 06 من 06",
         title: "التسليم",
         desc: "الوصول إلى المشروع المكتمل وتسليم النتائج وفق النظام المتفق عليه والشفافية الكاملة من أول طوبة لحد المفتاح."
       }
     ];
 
-    const buttons = document.querySelectorAll(".stage-btn");
-    const stageTag = document.getElementById("stageTag");
+    const stageBtns = document.querySelectorAll(".stage-btn");
+    const stageNum = document.getElementById("stageNum");
     const stageTitle = document.getElementById("stageTitle");
     const stageDesc = document.getElementById("stageDesc");
 
-    buttons.forEach((btn) => {
+    stageBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        buttons.forEach((b) => b.classList.remove("active"));
+        stageBtns.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-        const idx = Number(btn.dataset.stage);
-        const item = stages[idx];
-        stageTag.textContent = item.tag;
-        stageTitle.textContent = item.title;
-        stageDesc.textContent = item.desc;
+        const s = stagesData[Number(btn.dataset.stage)];
+        stageNum.textContent = s.num;
+        stageTitle.textContent = s.title;
+        stageDesc.textContent = s.desc;
       });
+    });
+
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+
+    function openModal(src, alt) {
+      modalImg.src = src;
+      modalImg.alt = alt || "";
+      modal.classList.add("open");
+    }
+
+    function closeModal() {
+      modal.classList.remove("open");
+      modalImg.src = "";
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
     });
   </script>
 </body>
